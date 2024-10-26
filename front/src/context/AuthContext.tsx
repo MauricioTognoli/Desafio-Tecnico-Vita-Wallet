@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { IAuthContextProps, IAuthState, IUser } from "../interfaces/interfaces";
+import { IAuthContextProps, IAuthState, IUser } from "../interfaces/AuthInterfaces";
 import axios from "axios";
 
 const AuthContext = createContext<IAuthContextProps | undefined>(undefined);
@@ -55,10 +55,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+
 export const useAuth = (): IAuthContextProps => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth debe ser usado dentro de un AuthProvider");
-  }
-  return context;
-};
+    const context = useContext(AuthContext);
+    if (!context) {
+      throw new Error('useAuth debe ser usado dentro de un AuthProvider');
+    }
+    return context;
+  };
